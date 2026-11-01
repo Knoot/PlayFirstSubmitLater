@@ -1,5 +1,17 @@
 # PlayFirst(SubmitLater)
-**Allows for automated elective score submission, including preventing submission of failed NF scores. For BS 1.16.4+**
+**Allows for automated elective score submission, including preventing submission of failed NF scores. This build targets Beat Saber 1.40.8.**
+
+## Building for 1.40.8
+
+Replay playback in BeatLeader, MultiLeaderboard and ScoreSaber skips PlayFirst gameplay actions, including the automatic pause. The BeatLeader replay guard is based on [upstream PR #2](https://github.com/zeph-yr/PlayFirstSubmitLater/pull/2), extended to detect the BeatLeader types embedded in MultiLeaderboard.
+
+Use Visual Studio MSBuild with the .NET Framework 4.7.2 targeting pack installed:
+
+```powershell
+msbuild PlayFirst.csproj /p:Configuration=Release /p:BeatSaberDir="X:\BSManager\BSInstances\1.40.8"
+```
+
+The game directory must contain BSIPA 4.3.6+, BS Utils 1.14.2+, BSML 1.12.5+ and SiraUtil 3.2.1+ compatible with this game version. The output is `bin/Release/PlayFirst.dll`; copy it into the game's `Plugins` directory while the game is closed. Builds do not install the mod automatically.
 
 Ever received trolly requests that you regret entertaining and now you have crap all over your ScoreSaber? Or is 14star OV forever dragging down your rank acc because your friends ran the map in MP (back in the day) while you went to eat? Now you can stop it from happening again! 
 This mod means you can play all the shitmaps and practice high stars with reckless abandon. No longer will you scream when finally pass OV but it was in practice mode or when you didn't manage to click Pause fast enough to quit a bad map.

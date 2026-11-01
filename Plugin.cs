@@ -61,6 +61,12 @@ namespace PlayFirst
             disable_run = false;
             confirmed = false;
 
+            if (ReplayPlaybackDetector.IsActive)
+            {
+                Logger.log.Debug("Replay playback detected; skipping PlayFirst gameplay actions");
+                return;
+            }
+
             if (PluginConfig.Instance.always_show_on_pause)
             {
                 CancelButtonViewController.Instance.ShowButton();
@@ -115,6 +121,9 @@ namespace PlayFirst
 
         private void BSEvents_energyReachedZero()
         {
+            if (ReplayPlaybackDetector.IsActive)
+                return;
+
             //Logger.log.Debug("Map Failed");
 
             // Allow for: Standard, Party, MP

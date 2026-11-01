@@ -30,7 +30,8 @@ namespace PlayFirst
                 if (audiocontroller.songTime >= pausetime)
                 {
                     paused_yet = true;
-                    pausecontroller.Pause();
+                    if (!ReplayPlaybackDetector.IsActive)
+                        pausecontroller.Pause();
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿using BeatSaberMarkupLanguage.Attributes;
+using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components.Settings;
 using BeatSaberMarkupLanguage.GameplaySetup;
 using BeatSaberMarkupLanguage.Parser;
@@ -36,16 +36,16 @@ namespace PlayFirst
 
         public void Initialize()
         {
-            GameplaySetup.instance.AddTab("PlayFirst", "PlayFirst.modifierUI.bsml", this);
+            GameplaySetup.Instance.AddTab("PlayFirst", "PlayFirst.modifierUI.bsml", this);
             Donate.Refresh_Text();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Donate_Update_Dynamic)));
         }
 
         public void Dispose()
         {
-            if (GameplaySetup.instance != null)
+            if (GameplaySetup.Instance != null)
             {
-                GameplaySetup.instance.RemoveTab("PlayFirst");
+                GameplaySetup.Instance.RemoveTab("PlayFirst");
             }
         }
 
